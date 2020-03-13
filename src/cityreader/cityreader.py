@@ -75,7 +75,7 @@ for c in cities:
 # Riverside: (33.9382,-117.3949)
 # San Diego: (32.8312,-117.1225)
 # Los Angeles: (34.114,-118.4068)
-# Las Vegas: (36.2288,-115.2603)
+# Las Vegas: (36.2288,-115.2603) 
 # Denver: (39.7621,-104.8759)
 # Phoenix: (33.5722,-112.0891)
 # Tucson: (32.1558,-110.8777)
@@ -85,10 +85,25 @@ for c in cities:
 
 def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
   # within will hold the cities that fall within the specified region
-  within = []
+    within = []
+
+    max_lat = max(lat1, lat2)
+    min_lat = min(lat1, lat2)
+    max_lon = max(lon1, lon2)
+    min_lon = min(lon1, lon2)
+
+    for city in cities:
+        if (float(min_lat) <= float(city.lat) and float(max_lat) >= float(city.lat)):
+            if (float(min_lon) <= float(city.lon) and float(max_lon) >= float(city.lon)):
+                within.append(city)
+
+    return within
+  
+
+
+
 
   # TODO Ensure that the lat and lon valuse are all floats
   # Go through each city and check to see if it falls within 
   # the specified coordinates.
 
-  return within
